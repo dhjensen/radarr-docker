@@ -14,6 +14,8 @@ services:
     networks:
       - nginx-proxy-manager_frontend
     restart: unless-stopped
+    labels:
+      - wud.tag.include=^release-\d+\.\d+\.\d+.\d+$$
 
 networks:
   nginx-proxy-manager_frontend:
