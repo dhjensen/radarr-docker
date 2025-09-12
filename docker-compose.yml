@@ -1,0 +1,24 @@
+name: radarr
+
+services:
+  radarr:
+    image: ghcr.io/hotio/radarr:release-${RADARR_VERSION}
+    container_name: radarr
+    volumes:
+      - radarr_config:/config:rw
+      - ~/Videos/movies:/movies:rw
+      - ~/Downloads:/downloads:rw
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - "127.0.0.1:7878:7878"
+    networks:
+      - nginx-proxy-manager_frontend
+    restart: unless-stopped
+
+networks:
+  nginx-proxy-manager_frontend:
+    driver: bridge
+    external: true
+
+volumes:
+  radarr_config:
