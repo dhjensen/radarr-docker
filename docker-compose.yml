@@ -12,12 +12,18 @@ services:
     ports:
       - "127.0.0.1:7878:7878"
     networks:
+      - backend
       - nginx-proxy-manager_frontend
     restart: unless-stopped
     labels:
       - wud.tag.include=^release-\d+\.\d+\.\d+.\d+$$
+      - traefik.enable=true
+      - traefik.http.routers.radarr-radarr.rule=Host(`radarr.dhjensen.tech`)
 
 networks:
+  backend:
+    external: true
+    driver: bridge
   nginx-proxy-manager_frontend:
     driver: bridge
     external: true
