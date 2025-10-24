@@ -10,10 +10,9 @@ services:
       - ~/Downloads:/downloads:rw
       - /etc/timezone:/etc/timezone:ro
     ports:
-      - "127.0.0.1:7878:7878"
+      - '127.0.0.1:7878:7878'
     networks:
       - backend
-      - nginx-proxy-manager_frontend
     restart: unless-stopped
     labels:
       - wud.tag.include=^release-\d+\.\d+\.\d+.\d+$$
@@ -24,9 +23,6 @@ networks:
   backend:
     external: true
     driver: bridge
-  nginx-proxy-manager_frontend:
-    driver: bridge
-    external: true
 
 volumes:
   radarr_config:
