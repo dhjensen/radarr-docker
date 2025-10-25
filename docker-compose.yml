@@ -7,8 +7,7 @@ services:
     volumes:
       - radarr_config:/config:rw
       - ~/Videos/movies:/movies:rw
-      - ~/Downloads:/downloads:rw
-      - /etc/timezone:/etc/timezone:ro
+      - ~/Downloads:/data/downloads:rw
     ports:
       - '127.0.0.1:7878:7878'
     networks:
